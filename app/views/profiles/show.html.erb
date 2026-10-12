@@ -1,0 +1,7 @@
+<h1>Профиль</h1>
+
+<p>Эта страница открывается только после входа.</p>
+<p>Email: <strong><%= current_user.email %></strong></p>
+<p>Зарегистрирован: <%= current_user.created_at.strftime("%d.%m.%Y") %></p>
+
+<%= button_to "Выйти", logout_path, method: :delete %>

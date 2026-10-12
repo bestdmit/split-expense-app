@@ -1,0 +1,12 @@
+<h1>Делим общие расходы</h1>
+
+<% if current_user %>
+  <p>Вы вошли как <strong><%= current_user.email %></strong></p>
+  <%= button_to "Выйти", logout_path, method: :delete %>
+<% else %>
+  <p>Вы не вошли.</p>
+  <p>
+    <%= link_to "Войти", login_path %> или
+    <%= link_to "зарегистрироваться", signup_path %>
+  </p>
+<% end %>

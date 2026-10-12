@@ -1,0 +1,17 @@
+<h1>Вход</h1>
+
+<%= form_with url: login_path do |f| %>
+  <p>
+    <%= f.label :email, "Email" %>
+    <%= f.email_field :email, value: params[:email] %>
+  </p>
+
+  <p>
+    <%= f.label :password, "Пароль" %>
+    <%= f.password_field :password %>
+  </p>
+
+  <%= f.submit "Войти" %>
+<% end %>
+
+<p>Нет аккаунта? <%= link_to "Зарегистрироваться", signup_path %></p>

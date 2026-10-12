@@ -1,0 +1,13 @@
+# Русские тексты ошибок валидации, которые видны на странице регистрации
+ru:
+  activerecord:
+    attributes:
+      user:
+        email: "Email"
+        password: "Пароль"
+  errors:
+    messages:
+      blank: "не может быть пустым"
+      taken: "уже занят"
+      too_short: "слишком короткий (минимум %{count} символов)"
+      too_long: "слишком длинный (максимум %{count} символов)"
