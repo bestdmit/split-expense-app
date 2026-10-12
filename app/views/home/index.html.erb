@@ -1,12 +1,18 @@
-<h1>Делим общие расходы</h1>
+<div class="card">
+  <h1>Делим общие расходы</h1>
+  <p class="muted">Учебное приложение: учёт общих трат и расчёт, кто кому сколько должен.</p>
 
-<% if current_user %>
-  <p>Вы вошли как <strong><%= current_user.email %></strong></p>
-  <%= button_to "Выйти", logout_path, method: :delete %>
-<% else %>
-  <p>Вы не вошли.</p>
-  <p>
-    <%= link_to "Войти", login_path %> или
-    <%= link_to "зарегистрироваться", signup_path %>
-  </p>
-<% end %>
+  <% if current_user %>
+    <p>Вы вошли как <strong><%= current_user.email %></strong></p>
+    <div class="actions">
+      <%= link_to "Профиль", profile_path, class: "btn btn-secondary" %>
+      <%= button_to "Выйти", logout_path, method: :delete, class: "btn" %>
+    </div>
+  <% else %>
+    <p>Вы не вошли.</p>
+    <div class="actions">
+      <%= link_to "Войти", login_path, class: "btn" %>
+      <%= link_to "Регистрация", signup_path, class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>

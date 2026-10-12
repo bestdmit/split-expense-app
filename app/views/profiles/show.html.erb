@@ -1,7 +1,13 @@
-<h1>Профиль</h1>
+<div class="card">
+  <h1>Профиль</h1>
+  <p class="muted">Эта страница открывается только после входа.</p>
 
-<p>Эта страница открывается только после входа.</p>
-<p>Email: <strong><%= current_user.email %></strong></p>
-<p>Зарегистрирован: <%= current_user.created_at.strftime("%d.%m.%Y") %></p>
+  <ul class="list">
+    <li><span>Email</span> <strong><%= current_user.email %></strong></li>
+    <li><span>Зарегистрирован</span> <strong><%= current_user.created_at.strftime("%d.%m.%Y") %></strong></li>
+  </ul>
 
-<%= button_to "Выйти", logout_path, method: :delete %>
+  <div class="actions">
+    <%= button_to "Выйти", logout_path, method: :delete, class: "btn" %>
+  </div>
+</div>

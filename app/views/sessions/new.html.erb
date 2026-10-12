@@ -1,17 +1,19 @@
-<h1>Вход</h1>
+<div class="card card-narrow">
+  <h1>Вход</h1>
 
-<%= form_with url: login_path do |f| %>
-  <p>
-    <%= f.label :email, "Email" %>
-    <%= f.email_field :email, value: params[:email] %>
-  </p>
+  <%= form_with url: login_path do |f| %>
+    <div class="field">
+      <%= f.label :email, "Email" %>
+      <%= f.email_field :email, value: params[:email] %>
+    </div>
 
-  <p>
-    <%= f.label :password, "Пароль" %>
-    <%= f.password_field :password %>
-  </p>
+    <div class="field">
+      <%= f.label :password, "Пароль" %>
+      <%= f.password_field :password %>
+    </div>
 
-  <%= f.submit "Войти" %>
-<% end %>
+    <%= f.submit "Войти", class: "btn" %>
+  <% end %>
 
-<p>Нет аккаунта? <%= link_to "Зарегистрироваться", signup_path %></p>
+  <p class="muted">Нет аккаунта? <%= link_to "Зарегистрироваться", signup_path %></p>
+</div>

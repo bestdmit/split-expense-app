@@ -1,0 +1,142 @@
+<h1>UI Kit</h1>
+<p class="muted">Все элементы интерфейса в одном месте. Стили — в файле <code>public/styles.css</code>.</p>
+
+<section class="kit-section">
+  <h2>Цвета</h2>
+  <div class="swatches">
+    <div><div class="swatch-color" style="background: var(--accent)"></div><code>--accent</code></div>
+    <div><div class="swatch-color" style="background: var(--text)"></div><code>--text</code></div>
+    <div><div class="swatch-color" style="background: var(--muted)"></div><code>--muted</code></div>
+    <div><div class="swatch-color" style="background: var(--bg)"></div><code>--bg</code></div>
+    <div><div class="swatch-color" style="background: var(--danger)"></div><code>--danger</code></div>
+  </div>
+</section>
+
+<section class="kit-section">
+  <h2>Кнопки</h2>
+  <div class="card">
+    <div class="actions">
+      <button type="button" class="btn">Основная</button>
+      <button type="button" class="btn btn-secondary">Второстепенная</button>
+      <button type="button" class="btn" disabled>Неактивная</button>
+      <a href="#" class="btn btn-secondary">Ссылка как кнопка</a>
+    </div>
+    <p class="hint"><code>.btn</code> <code>.btn.btn-secondary</code> <code>disabled</code></p>
+  </div>
+</section>
+
+<section class="kit-section">
+  <h2>Поля формы</h2>
+  <div class="card">
+    <div class="field">
+      <label for="kit-text">Текстовое поле</label>
+      <input id="kit-text" type="text" placeholder="Например, пицца">
+    </div>
+
+    <div class="field">
+      <label for="kit-number">Число</label>
+      <input id="kit-number" type="number" value="500">
+      <p class="hint">Подсказка под полем — <code>.hint</code></p>
+    </div>
+
+    <div class="field">
+      <label for="kit-select">Выпадающий список</label>
+      <select id="kit-select">
+        <option>Аня</option>
+        <option>Боря</option>
+        <option>Вера</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <div class="field_with_errors"><label for="kit-error">Поле с ошибкой</label></div>
+      <div class="field_with_errors"><input id="kit-error" type="text"></div>
+      <p class="hint">Rails сам оборачивает такое поле в <code>.field_with_errors</code></p>
+    </div>
+  </div>
+</section>
+
+<section class="kit-section">
+  <h2>Сообщения</h2>
+  <p class="flash">Уведомление: <code>.flash</code></p>
+  <p class="flash flash-alert">Ошибка: <code>.flash.flash-alert</code></p>
+  <ul class="errors">
+    <li>Название: обязательное поле</li>
+    <li>Сумма: значение должно быть больше 0</li>
+  </ul>
+</section>
+
+<section class="kit-section">
+  <h2>Форма добавления траты</h2>
+  <form class="card">
+    <div class="field">
+      <label for="kit-title">Название</label>
+      <input id="kit-title" type="text" placeholder="Такси">
+    </div>
+
+    <div class="field">
+      <label for="kit-amount">Сумма, ₽</label>
+      <input id="kit-amount" type="number" min="1" placeholder="900">
+    </div>
+
+    <div class="field">
+      <label for="kit-payer">Кто заплатил</label>
+      <select id="kit-payer">
+        <option>Аня</option>
+        <option>Боря</option>
+        <option>Вера</option>
+      </select>
+      <p class="hint">Трата делится поровну между всеми участниками</p>
+    </div>
+
+    <button type="button" class="btn">Добавить трату</button>
+  </form>
+</section>
+
+<section class="kit-section">
+  <h2>Карточка траты</h2>
+  <div class="card expense">
+    <div>
+      <div class="expense-title">Такси</div>
+      <div class="expense-meta">Заплатила Аня · по 300 ₽ с каждого</div>
+    </div>
+    <div class="expense-amount">900 ₽</div>
+  </div>
+
+  <div class="card expense">
+    <div>
+      <div class="expense-title">Кофе</div>
+      <div class="expense-meta">Заплатил Боря · по 100 ₽ с каждого</div>
+    </div>
+    <div class="expense-amount">300 ₽</div>
+  </div>
+</section>
+
+<section class="kit-section">
+  <h2>Список участников</h2>
+  <div class="card">
+    <h3>Участники и балансы</h3>
+    <ul class="list">
+      <li><span>Аня</span> <span class="plus">+900 ₽</span></li>
+      <li><span>Боря</span> <span class="minus">−300 ₽</span></li>
+      <li><span>Вера</span> <span class="minus">−600 ₽</span></li>
+    </ul>
+    <p class="hint">Плюс — участнику должны, минус — он должен</p>
+  </div>
+</section>
+
+<section class="kit-section">
+  <h2>Итог «кто кому должен»</h2>
+  <div class="card settlement">
+    <h3>Кто кому должен</h3>
+    <ul class="list">
+      <li><span>Вера → Аня</span> <strong>600 ₽</strong></li>
+      <li><span>Боря → Аня</span> <strong>300 ₽</strong></li>
+    </ul>
+  </div>
+
+  <div class="card settlement">
+    <h3>Кто кому должен</h3>
+    <p class="muted">Все в расчёте — переводы не нужны.</p>
+  </div>
+</section>

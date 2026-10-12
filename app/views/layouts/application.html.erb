@@ -4,22 +4,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Split Expense</title>
+    <%# Файл лежит в public/styles.css — Rails отдаёт папку public как есть %>
+    <link rel="stylesheet" href="/styles.css">
   </head>
 
   <body>
-    <header>
-      <%= link_to "Split Expense", root_path %>
-      <% if current_user %>
-        <%= link_to "Профиль", profile_path %>
-      <% end %>
+    <header class="header">
+      <div class="container">
+        <%= link_to "Split Expense", root_path, class: "logo" %>
+        <%= link_to "UI Kit", styleguide_path %>
+        <% if current_user %>
+          <%= link_to "Профиль", profile_path %>
+        <% end %>
+      </div>
     </header>
 
-    <main>
+    <main class="container">
       <% if notice %>
-        <p><%= notice %></p>
+        <p class="flash"><%= notice %></p>
       <% end %>
       <% if alert %>
-        <p><%= alert %></p>
+        <p class="flash flash-alert"><%= alert %></p>
       <% end %>
 
       <%= yield %>
