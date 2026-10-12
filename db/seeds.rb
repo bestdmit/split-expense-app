@@ -1,9 +1,18 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# Демо-данные для показа на защите. Запуск: bin/rails db:seed
+# Можно запускать повторно: участники и траты демо-пользователя пересоздаются заново.
+
+user = User.find_or_create_by!(email: "demo@example.com") do |u|
+  u.password = "secret123"
+end
+
+user.participants.destroy_all
+
+anna = user.participants.create!(name: "Аня")
+boris = user.participants.create!(name: "Боря")
+vera = user.participants.create!(name: "Вера")
+
+anna.expenses.create!(title: "Такси", amount: 900)
+anna.expenses.create!(title: "Продукты", amount: 600)
+boris.expenses.create!(title: "Кофе", amount: 300)
+
+puts "Демо-пользователь: demo@example.com / secret123"

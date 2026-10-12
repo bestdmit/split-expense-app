@@ -1,13 +1,25 @@
-# Русские тексты ошибок валидации, которые видны на странице регистрации
+# Русские названия полей и тексты ошибок валидации.
+# Формат "Поле: сообщение" — так сообщения не зависят от рода слова.
 ru:
   activerecord:
     attributes:
       user:
         email: "Email"
         password: "Пароль"
+      participant:
+        name: "Имя"
+        user: "Пользователь"
+      expense:
+        title: "Название"
+        amount: "Сумма"
+        participant: "Плательщик"
   errors:
+    format: "%{attribute}: %{message}"
     messages:
-      blank: "не может быть пустым"
-      taken: "уже занят"
-      too_short: "слишком короткий (минимум %{count} символов)"
-      too_long: "слишком длинный (максимум %{count} символов)"
+      blank: "обязательное поле"
+      taken: "уже используется"
+      too_short: "минимум %{count} символов"
+      too_long: "максимум %{count} символов"
+      required: "не указан"
+      not_a_number: "нужно ввести число"
+      greater_than: "значение должно быть больше %{count}"
