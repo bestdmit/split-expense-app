@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   get "profile" => "profiles#show"
 
+  resources :participants, only: [ :index, :create, :destroy ]
+  resources :expenses, only: [ :index, :create, :destroy ]
+  get "settlement" => "settlements#show"
+
   get "styleguide" => "styleguide#index"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

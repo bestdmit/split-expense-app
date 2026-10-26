@@ -1,0 +1,48 @@
+<h1>Итог</h1>
+<p class="muted">Расчёт использует все траты текущего пользователя.</p>
+
+<div class="card">
+  <h2>Общая сумма</h2>
+  <p><strong><%= number_to_currency(@total, unit: "₽", format: "%n %u", separator: ".", delimiter: " ") %></strong> всего потрачено</p>
+  <p class="hint">Доля каждого участника: <%= number_to_currency(@share, unit: "₽", format: "%n %u", separator: ".", delimiter: " ") %></p>
+</div>
+
+<div class="card">
+  <h2>Балансы</h2>
+  <% if @participants.any? %>
+    <ul class="list">
+      <% @participants.each do |participant| %>
+        <% balance = @balances[participant] || 0 %>
+        <li>
+          <span><%= participant.name %></span>
+          <span class="<%= balance.negative? ? "minus" : "plus" %>">
+            <%= balance.positive? ? "+" : "" %><%= number_to_currency(balance, unit: "₽", format: "%n %u", separator: ".", delimiter: " ") %>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="muted">Сначала добавьте участников.</p>
+  <% end %>
+</div>
+
+<div class="card settlement">
+  <h2>Кто кому должен</h2>
+  <% if @transfers.any? %>
+    <ul class="list">
+      <% @transfers.each do |transfer| %>
+        <li>
+          <span><%= transfer[:from].name %> → <%= transfer[:to].name %></span>
+          <strong><%= number_to_currency(transfer[:amount], unit: "₽", format: "%n %u", separator: ".", delimiter: " ") %></strong>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="muted">Все в расчёте — переводы не нужны.</p>
+  <% end %>
+</div>
+
+<div class="actions">
+  <%= link_to "Изменить участников", participants_path, class: "btn btn-secondary" %>
+  <%= link_to "Изменить траты", expenses_path, class: "btn" %>
+</div>

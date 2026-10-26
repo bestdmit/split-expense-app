@@ -1,0 +1,57 @@
+<h1>Траты</h1>
+<p class="muted">Каждая трата делится поровну между всеми участниками.</p>
+
+<div class="card">
+  <h2>Добавить трату</h2>
+  <% if @participants.any? %>
+    <%= form_with model: @expense do |form| %>
+      <% if @expense.errors.any? %>
+        <ul class="errors">
+          <% @expense.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :title, "Название" %>
+        <%= form.text_field :title, placeholder: "Например, такси" %>
+      </div>
+      <div class="field">
+        <%= form.label :amount, "Сумма, ₽" %>
+        <%= form.number_field :amount, min: 0.01, step: 0.01, placeholder: "900" %>
+      </div>
+      <div class="field">
+        <%= form.label :participant_id, "Кто заплатил" %>
+        <%= form.collection_select :participant_id, @participants, :id, :name %>
+      </div>
+      <%= form.submit "Добавить трату", class: "btn" %>
+    <% end %>
+  <% else %>
+    <p class="muted">Сначала добавьте участников.</p>
+    <%= link_to "Добавить участников", participants_path, class: "btn" %>
+  <% end %>
+</div>
+
+<h2>Список трат</h2>
+<% if @expenses.any? %>
+  <% @expenses.each do |expense| %>
+    <div class="card expense">
+      <div>
+        <div class="expense-title"><%= expense.title %></div>
+        <div class="expense-meta">Заплатил(а) <%= expense.participant.name %></div>
+      </div>
+      <div>
+        <div class="expense-amount"><%= number_to_currency(expense.amount, unit: "₽", format: "%n %u", separator: ".", delimiter: " ") %></div>
+        <%= button_to "Удалить", expense_path(expense), method: :delete, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p class="muted">Трат пока нет.</p>
+<% end %>
+
+<div class="actions">
+  <%= link_to "Участники", participants_path, class: "btn btn-secondary" %>
+  <%= link_to "Открыть итог", settlement_path, class: "btn" %>
+</div>

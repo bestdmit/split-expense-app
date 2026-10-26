@@ -1,0 +1,42 @@
+<h1>Участники</h1>
+<p class="muted">Добавьте всех, между кем делятся общие расходы.</p>
+
+<div class="card">
+  <h2>Добавить участника</h2>
+  <%= form_with model: @participant do |form| %>
+    <% if @participant.errors.any? %>
+      <ul class="errors">
+        <% @participant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :name, "Имя" %>
+      <%= form.text_field :name, placeholder: "Например, Аня" %>
+    </div>
+    <%= form.submit "Добавить", class: "btn" %>
+  <% end %>
+</div>
+
+<div class="card">
+  <h2>Список участников</h2>
+  <% if @participants.any? %>
+    <ul class="list">
+      <% @participants.each do |participant| %>
+        <li>
+          <span><%= participant.name %></span>
+          <%= button_to "Удалить", participant_path(participant), method: :delete, class: "btn btn-secondary" %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="muted">Участников пока нет.</p>
+  <% end %>
+</div>
+
+<div class="actions">
+  <%= link_to "Добавить траты", expenses_path, class: "btn" %>
+  <%= link_to "Открыть итог", settlement_path, class: "btn btn-secondary" %>
+</div>
